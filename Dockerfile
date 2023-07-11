@@ -14,5 +14,3 @@ RUN mkdir /scripts
 # Set the working directory
 WORKDIR /scripts
 
-# Set the entrypoint to execute the Python script
-ENTRYPOINT ["python", "podRestart.py"]
