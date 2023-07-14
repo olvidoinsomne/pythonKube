@@ -6,7 +6,9 @@ RUN apt-get update \
     && curl -LO "https://dl.k8s.io/release/$(curl -L -s https://dl.k8s.io/release/stable.txt)/bin/linux/amd64/kubectl" \
     && install -o root -g root -m 0755 kubectl /usr/local/bin/kubectl \
     && rm kubectl \
-    && pip install flask kubernetes slack_sdk
+    && pip install flask \
+    && pip install kubernetes \
+    && pip install slack_sdk
 
 # Make scripts directory
 RUN mkdir /scripts
