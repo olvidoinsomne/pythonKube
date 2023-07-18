@@ -7,7 +7,10 @@ RUN apt-get update \
     && install -o root -g root -m 0755 kubectl /usr/local/bin/kubectl \
     && rm kubectl \
     && pip install flask \
-    && pip install kubernetes 
+    && pip install kubernetes \
+    && pip install aiohttp \
+    && pip install slack_sdk \
+    && pip install slackeventsapi
 
 # Make scripts directory
 RUN mkdir /scripts
@@ -16,12 +19,12 @@ RUN mkdir /scripts
 WORKDIR /scripts
 
 #Additional modules can be added in a initPythonModules
-RUN if [ -f initPythonModules ]; then \
-        for pyModule in $(cat ./initPythonModules); do \
-	    echo "Installing python module $pyModule"\
-            pip install "$pyModule"; \
-        done \
-    fi
+#RUN if [ -f initPythonModules ]; then \
+#        for pyModule in $(cat ./initPythonModules); do \
+#	    echo "Installing python module $pyModule"\
+#            pip install "$pyModule"; \
+#        done \
+#    fi
 
 #keepS the container running for troubleshooting
 CMD ["tail", "-f", "/dev/null"] 
