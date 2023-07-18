@@ -16,7 +16,7 @@ RUN mkdir /scripts
 WORKDIR /scripts
 
 #Additional modules can be added in a initPythonModules
-RUN if [ -f initPythonModules ]; then \
+RUN if [ -f /scripts/initPythonModules ]; then \
         for pyModule in $(cat initPythonModules); do \
             pip install "$pyModule"; \
         done \
